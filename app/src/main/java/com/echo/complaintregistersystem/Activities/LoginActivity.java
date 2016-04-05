@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         manager = new CookieManager();
         CookieHandler.setDefault(manager);
         final TextView username = (TextView) findViewById(R.id.Username);
@@ -74,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                url[0] = MainActivity.ip + "/default/login.json?userid="+username.getText().toString()+"&password="+password.getText().toString();
+                url[0] = MainActivity.ip + "loginUser/"+username.getText().toString()+"/"+password.getText().toString()+"/";
                 Toast.makeText(LoginActivity.this, "Connecting to the server", Toast.LENGTH_SHORT).show();
                 JsonObjectRequest jsonRequest = new JsonObjectRequest
                         (Request.Method.GET, url[0], null, new Response.Listener<JSONObject>() {
@@ -84,20 +85,22 @@ public class LoginActivity extends AppCompatActivity {
                                 try {
                                     if (response.getBoolean("success")) {
                                         Toast.makeText(LoginActivity.this, "LogIn Successful", Toast.LENGTH_SHORT).show();
-                                        JSONObject userDetails = response.getJSONObject("user");
+                                        JSONObject userDetails = response.getJSONObject("details");
                                         if(rememberMe.isChecked())
                                             editor.putBoolean("ISLOGIN", true);
-                                        editor.putString("NAME", userDetails.getString("first_name") + " " + userDetails.getString("last_name"));
+                                        editor.putString("NAME", userDetails.getString("name"));
                                         editor.putString("EMAIL", userDetails.getString("email"));
                                         editor.putString("USERNAME", userDetails.getString("username"));
                                         editor.putString("PASSWORD", userDetails.getString("password"));
                                         editor.putString("TYPE_OF_USER", userDetails.getString("type_of_user"));
                                         editor.putString("RESIDENCY",userDetails.getString("residency"));
+                                        editor.putString("CONTACT_NO",userDetails.getString("contact_number"));
                                         editor.putString("ROOM_NO",userDetails.getString("room_no"));
                                         editor.putString("PRIMARY_ID",userDetails.getString("primary_id"));
                                         editor.commit();
-                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                        startActivity(intent);
+                                        Toast.makeText(LoginActivity.this, "Name : "+userDetails.getString("name"), Toast.LENGTH_SHORT).show();
+//                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                                        startActivity(intent);
                                     } else
                                         Toast.makeText(LoginActivity.this, "LogIn Unsuccessful", Toast.LENGTH_LONG).show();
                                 } catch (JSONException e) {

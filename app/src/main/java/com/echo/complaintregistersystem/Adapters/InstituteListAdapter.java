@@ -1,7 +1,6 @@
 package com.echo.complaintregistersystem.Adapters;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -9,8 +8,6 @@ import android.widget.TextView;
 
 import com.echo.complaintregistersystem.ListItems.InstituteEntry;
 import com.echo.complaintregistersystem.R;
-import com.echo.complaintsystem.ListItem.InstituteEntry;
-import com.echo.complaintsystem.R;
 
 import java.util.List;
 
