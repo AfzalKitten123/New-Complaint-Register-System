@@ -1,0 +1,75 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="layout.item_residentR_others">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="1."
+            android:id="@+id/Number_tv"
+            android:layout_weight="0.03"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Fan is not working"
+            android:id="@+id/Complaint_tv"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/Number_tv"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Resolved On : "
+            android:id="@+id/textView2"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/Complaint_tv"
+            android:layout_alignStart="@+id/Complaint_tv"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="26-03-2016"
+            android:id="@+id/resolveDate_tv"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/Complaint_tv"
+            android:layout_toEndOf="@+id/textView2"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="By : "
+            android:id="@+id/tvr"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/textView2"
+            android:layout_alignStart="@+id/textView2"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Afzal Shama"
+            android:id="@+id/ByName_tv"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/textView2"
+            android:layout_toEndOf="@+id/tvr"
+            android:textSize="20dp" />
+    </RelativeLayout>
+</FrameLayout>
