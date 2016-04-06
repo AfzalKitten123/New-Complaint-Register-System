@@ -10,17 +10,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="1."
-            android:id="@+id/ind_no"
-            android:textSize="20dp"
-            android:layout_margin="8dp"/>
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="1."
+                android:id="@+id/indcl_no." />
+        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
@@ -28,34 +31,31 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Fan is not working"
-                android:id="@+id/ind_title"
-                android:layout_alignParentTop="true"
-                android:textSize="20dp" />
+                android:id="@+id/indcl_title"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Created On : "
-                    android:id="@+id/textView3" />
+                    android:id="@+id/indcl_textView2"
+                    android:layout_marginTop="3dp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="26-03-2016"
-                    android:id="@+id/I_createdDate" />
+                    android:id="@+id/indcl_createdDate"
+                    android:layout_marginTop="3dp" />
+
             </LinearLayout>
-
         </LinearLayout>
-
-
-
-
     </LinearLayout>
 </FrameLayout>
