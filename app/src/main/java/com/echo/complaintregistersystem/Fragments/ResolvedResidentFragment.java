@@ -1,6 +1,8 @@
 package com.echo.complaintregistersystem.Fragments;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.echo.complaintregistersystem.Adapters.ResidentRListAdapter;
 import com.echo.complaintregistersystem.ListItems.ResidentREntry;
+import com.echo.complaintregistersystem.MainActivity;
 import com.echo.complaintregistersystem.R;
 
 import org.json.JSONArray;
@@ -35,6 +38,7 @@ public class ResolvedResidentFragment extends Fragment {
 
     private ListView listView;
     private List<ResidentREntry> complaintList;
+    SharedPreferences sharedPreferences;
 
     public ResolvedResidentFragment() {
         // Required empty public constructor
@@ -47,9 +51,11 @@ public class ResolvedResidentFragment extends Fragment {
         // Inflate the layout for this fragment
         View myView=inflater.inflate(R.layout.fragment_resolved_resident, container, false);
         listView=(ListView)myView.findViewById(R.id.ResR_lv);
+        sharedPreferences = getActivity().getSharedPreferences("MYPREFERENCES", Context.MODE_PRIVATE);
+        String userID = sharedPreferences.getString("PRIMARY_ID","1");
 
 //url need to be added
-        String url=" ";
+        String url= MainActivity.ip + "getRHostelComplaints" + userID + "/";
         Toast.makeText(getActivity(), " Retrieving the Complaints ", Toast.LENGTH_SHORT).show();
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest
@@ -66,12 +72,12 @@ public class ResolvedResidentFragment extends Fragment {
                                         complaintArray.getJSONObject(i).getString("title"),
                                         complaintArray.getJSONObject(i).getString("description"),
                                         complaintArray.getJSONObject(i).getString("category"),
-                                        complaintArray.getJSONObject(i).getString("createddate"),
-                                        complaintArray.getJSONObject(i).getString("resolveddate"),
+                                        complaintArray.getJSONObject(i).getString("date_created"),
+                                        complaintArray.getJSONObject(i).getString("date_resolved"),
                                         complaintArray.getJSONObject(i).getString("byname"),
                                         complaintArray.getJSONObject(i).getString("username"),
-                                        complaintArray.getJSONObject(i).getString("roomno"),
-                                        complaintArray.getJSONObject(i).getString("residence"),
+                                        complaintArray.getJSONObject(i).getString("room_no"),
+                                        complaintArray.getJSONObject(i).getString("origin"),
                                         complaintArray.getJSONObject(i).getString("comments")));
                             }
                             ResidentRListAdapter adapter= new ResidentRListAdapter(getActivity(),complaintList);

@@ -1,5 +1,7 @@
 package com.echo.complaintregistersystem.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.echo.complaintregistersystem.Adapters.IndividualListAdapter;
 import com.echo.complaintregistersystem.ListItems.Individual_CLEntry;
+import com.echo.complaintregistersystem.MainActivity;
 import com.echo.complaintregistersystem.R;
 
 import org.json.JSONArray;
@@ -32,6 +35,7 @@ public class UnresolvedIndividualFragment extends Fragment {
 
     ListView listView;
     List<Individual_CLEntry> complaintList;
+    SharedPreferences sharedPreferences;
     public UnresolvedIndividualFragment() {
         // Required empty public constructor
     }
@@ -42,9 +46,10 @@ public class UnresolvedIndividualFragment extends Fragment {
                              Bundle savedInstanceState) {
         View myView=inflater.inflate(R.layout.fragment_unresolved_individual, container, false);
         listView=(ListView)myView.findViewById(R.id.Ind_lv);
-
+        sharedPreferences = getActivity().getSharedPreferences("MYPREFERENCES", Context.MODE_PRIVATE);
+        String userID = sharedPreferences.getString("PRIMARY_ID","1");
 //url need to be added
-        String url=" ";
+        String url= MainActivity.ip + "getURIndividualComplaints/" + userID + "/";
         Toast.makeText(getActivity()," Retrieving the Complaints ",Toast.LENGTH_SHORT).show();
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest
@@ -53,20 +58,19 @@ public class UnresolvedIndividualFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         // the response is already constructed as a JSONObject!
                         try {
-                            JSONArray complaintArray = response.getJSONArray("complaintArray");
+                            JSONArray complaintArray = response.getJSONArray("List_of_IndividualUnresolvedComplaints");
                             complaintList = new ArrayList<>();
-                            complaintList.add(new Individual_CLEntry());
                             for(int i=0;i<complaintArray.length();i++){
                                 complaintList.add(new Individual_CLEntry(
                                         complaintArray.getJSONObject(i).getString("title"),
                                         complaintArray.getJSONObject(i).getString("description"),
                                         complaintArray.getJSONObject(i).getString("category"),
-                                        complaintArray.getJSONObject(i).getString("createddate"),
-                                        complaintArray.getJSONObject(i).getString("resolveddate"),
-                                        complaintArray.getJSONObject(i).getString("byname"),
-                                        complaintArray.getJSONObject(i).getString("username"),
-                                        complaintArray.getJSONObject(i).getString("roomno"),
-                                        complaintArray.getJSONObject(i).getString("residence"),
+                                        complaintArray.getJSONObject(i).getString("date_created"),
+                                        complaintArray.getJSONObject(i).getString("date_resolved"),
+                                        sharedPreferences.getString("NAME", "Afzal Shama"),
+                                        sharedPreferences.getString("USERNAME","Afzal Shama"),
+                                        complaintArray.getJSONObject(i).getString("room_no"),
+                                        sharedPreferences.getString("RESIDENCY","HIMADRI"),
                                         complaintArray.getJSONObject(i).getString("comments")));
                             }
                             IndividualListAdapter adapter= new IndividualListAdapter(getActivity(),complaintList);

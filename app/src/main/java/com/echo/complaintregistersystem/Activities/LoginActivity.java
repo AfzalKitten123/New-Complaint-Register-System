@@ -99,8 +99,8 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.putString("PRIMARY_ID",userDetails.getString("primary_id"));
                                         editor.commit();
                                         Toast.makeText(LoginActivity.this, "Name : "+userDetails.getString("name"), Toast.LENGTH_SHORT).show();
-//                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                                        startActivity(intent);
+                                       Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        startActivity(intent);
                                     } else
                                         Toast.makeText(LoginActivity.this, "LogIn Unsuccessful", Toast.LENGTH_LONG).show();
                                 } catch (JSONException e) {

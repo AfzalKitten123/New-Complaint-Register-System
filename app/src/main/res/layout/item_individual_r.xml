@@ -1,45 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="1."
-            android:id="@+id/number_indcom"
-            android:textSize="20dp"
-            />
-        <TextView
-            android:layout_toRightOf="@+id/number_indcom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ind_title"
-            android:text="title individual"
-            android:textSize="20dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/res"
-            android:layout_below="@+id/ind_title"
-            android:layout_alignLeft="@+id/ind_title"
-            android:textSize="15dp"
-            android:text="resolved date:"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/resolveddate_ind"
-            android:layout_toRightOf="@+id/res"
-            android:text="02/07/2016"
-            android:textSize="15dp"
-            android:layout_alignTop="@+id/res"
-            android:layout_marginLeft="10dp"
-            android:layout_alignBottom="@+id/res" />
+            android:id="@+id/indR_no"
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            android:gravity="center" />
 
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Fan is not working"
+                android:id="@+id/indR_title"
+                android:layout_alignParentTop="true"
+                android:textSize="20dp" />
 
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Resolved On : "
+                    android:id="@+id/IndR_textView3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="26-03-2016"
+                    android:id="@+id/indR_createdDate" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+</FrameLayout>

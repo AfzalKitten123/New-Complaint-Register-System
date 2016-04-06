@@ -1,6 +1,8 @@
 package com.echo.complaintregistersystem.Fragments;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.echo.complaintregistersystem.Adapters.IndividualRListAdapter;
 import com.echo.complaintregistersystem.ListItems.IndividualR_CLEntry;
+import com.echo.complaintregistersystem.MainActivity;
 import com.echo.complaintregistersystem.R;
 
 import org.json.JSONArray;
@@ -33,6 +36,7 @@ public class ResolvedIndividualFragment extends Fragment {
 
     private ListView listView;
     private List<IndividualR_CLEntry> complaintList;
+    SharedPreferences sharedPreferences;
 
     public ResolvedIndividualFragment() {
         // Required empty public constructor
@@ -45,10 +49,11 @@ public class ResolvedIndividualFragment extends Fragment {
         // Inflate the layout for this fragment
         View myView=inflater.inflate(R.layout.fragment_resolved_individual, container, false);
         listView=(ListView)myView.findViewById(R.id.IndR_lv);
-
+        sharedPreferences = getActivity().getSharedPreferences("MYPREFERENCES", Context.MODE_PRIVATE);
+        String userID = sharedPreferences.getString("PRIMARY_ID","1");
 //url need to be added
-        String url=" ";
-        Toast.makeText(getActivity(), " Retrieving the Complaints ", Toast.LENGTH_SHORT).show();
+        String url= MainActivity.ip+"getRIndividualComplaints/"+userID+"/";
+        Toast.makeText(getActivity(), " Retrieving the Complaints of " + sharedPreferences.getString("NAME","Afzal"), Toast.LENGTH_SHORT).show();
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -56,27 +61,24 @@ public class ResolvedIndividualFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         // the response is already constructed as a JSONObject!
                         try {
-                            JSONArray complaintArray = response.getJSONArray("complaintArray");
+                            JSONArray complaintArray = response.getJSONArray("List_of_IndividualResolvedComplaints");
                             complaintList = new ArrayList<>();
-                            complaintList.add(new IndividualR_CLEntry());
                             for(int i=0;i<complaintArray.length();i++){
-
 
                                 complaintList.add(new IndividualR_CLEntry(
                                         complaintArray.getJSONObject(i).getString("title"),
                                         complaintArray.getJSONObject(i).getString("description"),
                                         complaintArray.getJSONObject(i).getString("category"),
-                                        complaintArray.getJSONObject(i).getString("createddate"),
-                                        complaintArray.getJSONObject(i).getString("resolveddate"),
+                                        complaintArray.getJSONObject(i).getString("date_created"),
+                                        complaintArray.getJSONObject(i).getString("date_resolved"),
                                         complaintArray.getJSONObject(i).getString("byname"),
                                         complaintArray.getJSONObject(i).getString("username"),
-                                        complaintArray.getJSONObject(i).getString("roomno"),
-                                        complaintArray.getJSONObject(i).getString("residence"),
+                                        complaintArray.getJSONObject(i).getString("room_no"),
+                                        sharedPreferences.getString("RESIDENCY","HIMADRI"),
                                         complaintArray.getJSONObject(i).getString("comments")));}
 
                             IndividualRListAdapter adapter= new IndividualRListAdapter(getActivity(),complaintList);
                             listView.setAdapter(adapter);
-
                         } catch (JSONException e) {
                             Toast.makeText(getActivity(), "JSONObjectException:\n" + e.getMessage(), Toast.LENGTH_LONG).show();
                             e.printStackTrace();

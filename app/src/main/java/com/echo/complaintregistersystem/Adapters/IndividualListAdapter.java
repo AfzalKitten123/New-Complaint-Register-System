@@ -27,9 +27,9 @@ public class IndividualListAdapter extends ArrayAdapter<Individual_CLEntry> {
         if(myView==null)
             myView = myActivity.getLayoutInflater().inflate(R.layout.item_individual_cl,parent,false);
         Individual_CLEntry Individual_clEntry= individual_clEntries.get(position);
-        ((TextView)myView.findViewById(R.id.Number_tv)).setText(position);
-        ((TextView)myView.findViewById(R.id.Complaint_tv)).setText(Individual_clEntry.getTitle());
-        ((TextView)myView.findViewById(R.id.createdDate_tv)).setText(Individual_clEntry.getCreatedDate());
+        ((TextView)myView.findViewById(R.id.ind_no)).setText(position+1);
+        ((TextView)myView.findViewById(R.id.ind_title)).setText(Individual_clEntry.getTitle());
+        ((TextView)myView.findViewById(R.id.I_createdDate)).setText(Individual_clEntry.getCreatedDate());
 
         return myView;
     }
