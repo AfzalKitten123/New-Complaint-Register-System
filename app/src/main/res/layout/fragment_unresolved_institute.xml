@@ -9,6 +9,5 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Ins_lv"
-        android:layout_gravity="center" />
+        android:id="@+id/Ins_lv"/>
 </FrameLayout>

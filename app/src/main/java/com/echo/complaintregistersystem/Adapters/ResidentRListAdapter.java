@@ -33,10 +33,9 @@ public class ResidentRListAdapter extends ArrayAdapter<ResidentREntry> {
         ResidentREntry residentREntry= residentREntries.get(position);
         if(myView==null)
             myView=myActivity.getLayoutInflater().inflate(R.layout.item_resident_r, parent, false);
-        ((TextView)myView.findViewById(R.id.Number_tv)).setText(position);
-        ((TextView)myView.findViewById(R.id.Complaint_tv)).setText(residentREntry.getTitle());
-        ((TextView)myView.findViewById(R.id.resolveDate_tv)).setText(residentREntry.getResolvedDate());
-        ((TextView)myView.findViewById(R.id.ByName_tv)).setText(residentREntry.getByName());
+        ((TextView)myView.findViewById(R.id.resR_no)).setText(position+1+".");
+        ((TextView)myView.findViewById(R.id.resR_title)).setText(residentREntry.getTitle());
+        ((TextView)myView.findViewById(R.id.resR_resolvedDate)).setText(residentREntry.getResolvedDate());
 
         return myView;
     }

@@ -2,12 +2,14 @@ package com.echo.complaintregistersystem.Fragments;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.echo.complaintregistersystem.Adapters.InstituteRListAdapter;
+import com.echo.complaintregistersystem.ComplaintInfo;
 import com.echo.complaintregistersystem.ListItems.InstituteREntry;
 import com.echo.complaintregistersystem.MainActivity;
 import com.echo.complaintregistersystem.R;
@@ -48,7 +51,7 @@ public class ResolvedInstituteFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences("MYPREFERENCES", Context.MODE_PRIVATE);
         String userID = sharedPreferences.getString("PRIMARY_ID","1");
 //url need to be added
-        String url= MainActivity.ip + "getRInstituteComplaints" + userID + "/";
+        String url= MainActivity.ip + "getRInstituteComplaints/";
         Toast.makeText(getActivity(), " Retrieving the Complaints ", Toast.LENGTH_SHORT).show();
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest
@@ -59,7 +62,6 @@ public class ResolvedInstituteFragment extends Fragment {
                         try {
                             JSONArray complaintArray = response.getJSONArray("List_of_InstituteResolvedComplaints");
                             complaintList = new ArrayList<>();
-                            complaintList.add(new InstituteREntry());
                             for(int i=0;i<complaintArray.length();i++){
                                 complaintList.add(new InstituteREntry(
                                         complaintArray.getJSONObject(i).getString("title"),
@@ -70,8 +72,9 @@ public class ResolvedInstituteFragment extends Fragment {
                                         complaintArray.getJSONObject(i).getString("byname"),
                                         complaintArray.getJSONObject(i).getString("username"),
                                         complaintArray.getJSONObject(i).getString("room_no"),
-                                        complaintArray.getJSONObject(i).getString("origin"),
-                                        complaintArray.getJSONObject(i).getString("comments")));
+                                        complaintArray.getJSONObject(i).getString("origin")
+                                //        complaintArray.getJSONObject(i).getString("comments")
+                                ));
                             }
                             InstituteRListAdapter adapter= new InstituteRListAdapter(getActivity(),complaintList);
                             listView.setAdapter(adapter);
@@ -90,6 +93,25 @@ public class ResolvedInstituteFragment extends Fragment {
                 });
 
         Volley.newRequestQueue(getActivity()).add(jsonRequest);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(getActivity(), ComplaintInfo.class);
+                i.putExtra("title", complaintList.get(position).getTitle());
+                i.putExtra("description", complaintList.get(position).getDescription());
+                i.putExtra("category", complaintList.get(position).getCategory());
+                i.putExtra("date_created", complaintList.get(position).getCreatedDate());
+                i.putExtra("date_resolved", complaintList.get(position).getResolvedDate());
+                i.putExtra("byname", complaintList.get(position).getByName());
+                i.putExtra("username", complaintList.get(position).getUsername());
+                i.putExtra("room_no", complaintList.get(position).getRoomNo());
+                // i.putExtra("comments",complaintList.get(position).getComments());
+
+                startActivity(i);
+            }
+        });
+
 
 
         return myView;

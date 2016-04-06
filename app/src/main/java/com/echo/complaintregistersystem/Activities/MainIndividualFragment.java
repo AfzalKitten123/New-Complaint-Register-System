@@ -21,7 +21,7 @@ public class MainIndividualFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_resident, container, false);
+        View rootView = inflater.inflate(R.layout.activity_individual, container, false);
         myTabHost = (FragmentTabHost) rootView.findViewById(android.R.id.tabhost);
 
         myTabHost.setup(getActivity(), getChildFragmentManager(), android.R.id.tabcontent);

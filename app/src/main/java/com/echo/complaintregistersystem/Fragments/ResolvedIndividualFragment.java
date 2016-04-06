@@ -2,12 +2,15 @@ package com.echo.complaintregistersystem.Fragments;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.echo.complaintregistersystem.Adapters.IndividualRListAdapter;
+import com.echo.complaintregistersystem.ComplaintInfo;
 import com.echo.complaintregistersystem.ListItems.IndividualR_CLEntry;
 import com.echo.complaintregistersystem.MainActivity;
 import com.echo.complaintregistersystem.R;
@@ -53,7 +57,7 @@ public class ResolvedIndividualFragment extends Fragment {
         String userID = sharedPreferences.getString("PRIMARY_ID","1");
 //url need to be added
         String url= MainActivity.ip+"getRIndividualComplaints/"+userID+"/";
-        Toast.makeText(getActivity(), " Retrieving the Complaints of " + sharedPreferences.getString("NAME","Afzal"), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), " Retrieving the Complaints of " + sharedPreferences.getString("NAME", "Afzal"), Toast.LENGTH_SHORT).show();
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -74,8 +78,9 @@ public class ResolvedIndividualFragment extends Fragment {
                                         complaintArray.getJSONObject(i).getString("byname"),
                                         complaintArray.getJSONObject(i).getString("username"),
                                         complaintArray.getJSONObject(i).getString("room_no"),
-                                        sharedPreferences.getString("RESIDENCY","HIMADRI"),
-                                        complaintArray.getJSONObject(i).getString("comments")));}
+                                        sharedPreferences.getString("RESIDENCY","HIMADRI")
+                                //        ,complaintArray.getJSONObject(i).getString("comments")
+                                ));}
 
                             IndividualRListAdapter adapter= new IndividualRListAdapter(getActivity(),complaintList);
                             listView.setAdapter(adapter);
@@ -95,7 +100,26 @@ public class ResolvedIndividualFragment extends Fragment {
         Volley.newRequestQueue(getActivity()).add(jsonRequest);
 
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(getActivity(), ComplaintInfo.class);
+                i.putExtra("title",complaintList.get(position).getTitle());
+                i.putExtra("description",complaintList.get(position).getDescription());
+                i.putExtra("category",complaintList.get(position).getCategory());
+                i.putExtra("date_created",complaintList.get(position).getCreatedDate());
+                i.putExtra("date_resolved",complaintList.get(position).getResolvedDate());
+                i.putExtra("byname",complaintList.get(position).getByName());
+                i.putExtra("username",complaintList.get(position).getUsername());
+                i.putExtra("room_no",complaintList.get(position).getRoomNo());
+               // i.putExtra("comments",complaintList.get(position).getComments());
+
+                startActivity(i);
+            }
+        });
+
         return myView;
     }
+
 
 }

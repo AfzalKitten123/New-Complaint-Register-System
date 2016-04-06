@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("MYPREFERENCES", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         if(sharedPreferences.getBoolean("ISLOGIN", false)){
-            url[0] = MainActivity.ip + "/default/login.json?userid="+sharedPreferences.getString("USERNAME","cs1110200")+"&password="+sharedPreferences.getString("PASSWORD", "john");
+            url[0] = MainActivity.ip + "loginUser/"+sharedPreferences.getString("USERNAME","cs1110200")+"/"+sharedPreferences.getString("PASSWORD", "john");
             JsonObjectRequest jsonRequest = new JsonObjectRequest
                     (Request.Method.GET, url[0], null, new Response.Listener<JSONObject>() {
                         @Override

@@ -16,7 +16,7 @@ public class IndividualR_CLEntry {
 
     }
 
-    public IndividualR_CLEntry(String title, String description, String category, String createdDate, String resolvedDate, String username, String byName, String roomNo, String residence, String comments) {
+    public IndividualR_CLEntry(String title, String description, String category, String createdDate, String resolvedDate, String username, String byName, String roomNo, String residence/*, String comments*/) {
         this.title = title;
         this.description = description;
         this.category = category;
@@ -26,7 +26,7 @@ public class IndividualR_CLEntry {
         this.byName = byName;
         this.roomNo = roomNo;
         this.residence = residence;
-        Comments = comments;
+    //    Comments = comments;
     }
 
     public String getByName(){
@@ -65,7 +65,9 @@ public class IndividualR_CLEntry {
         return residence;
     }
 
-    public String getComments() {
+  /*  public String getComments() {
         return Comments;
-    }
+    }*/
+
+
 }

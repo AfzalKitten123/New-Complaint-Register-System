@@ -16,7 +16,7 @@ public class ResidentREntry {
 
     }
 
-    public ResidentREntry(String title, String description, String category, String createdDate, String resolvedDate, String byName, String username, String roomNo, String residence, String comments) {
+    public ResidentREntry(String title, String description, String category, String createdDate, String resolvedDate, String byName, String username, String roomNo, String residence/*, String comments*/) {
         this.title = title;
         this.description = description;
         this.category = category;
@@ -26,7 +26,7 @@ public class ResidentREntry {
         this.username = username;
         this.roomNo = roomNo;
         this.residence = residence;
-        Comments = comments;
+        //Comments = comments;
     }
 
     public String getTitle() {

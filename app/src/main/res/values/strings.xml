@@ -17,4 +17,17 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string-array name="categories">
+        <item>Electricity</item>
+        <item>Plumber</item>
+        <item>Carpentry</item>
+        <item>Sports</item>
+        <item>Cultural</item>
+        <item>Library</item>
+        <item>CSC</item>
+        <item>Mess</item>
+        <item>Security</item>
+        <item>Others</item>
+    </string-array>
+    <string name="title_activity_profile">Profile</string>
 </resources>

@@ -27,9 +27,10 @@ public class InstituteListAdapter extends ArrayAdapter<InstituteEntry>{
         if(myView==null)
             myView=myActivity.getLayoutInflater().inflate(R.layout.item_institute,parent,false);
         InstituteEntry instituteEntry=instituteEntries.get(position);
-        ((TextView)myView.findViewById(R.id.Number_tv)).setText(position);
-        // ((TextView)myView.findViewById(R.id.Complaint_tv)).setText(instituteEntry.getComplaint());
-        ((TextView)myView.findViewById(R.id.createdDate_tv)).setText(instituteEntry.getCreatedDate());
+        ((TextView)myView.findViewById(R.id.ins_no)).setText(position+1+".");
+        ((TextView)myView.findViewById(R.id.ins_title)).setText(instituteEntry.getTitle());
+        ((TextView)myView.findViewById(R.id.ins_ByName)).setText(instituteEntry.getByName());
+        ((TextView)myView.findViewById(R.id.ins_createdDate)).setText(instituteEntry.getCreatedDate());
 
         return myView;
     }

@@ -25,11 +25,11 @@ public class InstituteRListAdapter extends ArrayAdapter<InstituteREntry>{
     public View getView(int position, View convertView, ViewGroup parent) {
         View myView = convertView;
         if(myView==null)
-            myView=myActivity.getLayoutInflater().inflate(R.layout.item_institute,parent,false);
+            myView=myActivity.getLayoutInflater().inflate(R.layout.item_institute_r,parent,false);
         InstituteREntry instituteREntry=instituteREntries.get(position);
-        ((TextView)myView.findViewById(R.id.Number_tv)).setText(position);
-        ((TextView)myView.findViewById(R.id.Complaint_tv)).setText(instituteREntry.getTitle());
-        ((TextView)myView.findViewById(R.id.resolveDate_tv)).setText(instituteREntry.getCreatedDate());
+        ((TextView)myView.findViewById(R.id.insR_no)).setText(position+1+".");
+        ((TextView)myView.findViewById(R.id.insR_title)).setText(instituteREntry.getTitle());
+        ((TextView)myView.findViewById(R.id.insR_resolvedDate)).setText(instituteREntry.getResolvedDate());
 
         return myView;
     }

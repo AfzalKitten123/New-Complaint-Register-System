@@ -7,8 +7,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ListView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Res_lv"
-        android:layout_gravity="center" />
+        android:id="@+id/Res_lv"/>
 </FrameLayout>

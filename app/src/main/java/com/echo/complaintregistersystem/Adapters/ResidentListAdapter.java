@@ -29,10 +29,10 @@ public class ResidentListAdapter extends ArrayAdapter<ResidentEntry> {
         if(myView==null)
             myView = myActivity.getLayoutInflater().inflate(R.layout.item_resident,parent,false);
 
-        ((TextView)myView.findViewById(R.id.Number_tv)).setText(position);
-        ((TextView)myView.findViewById(R.id.Complaint_tv)).setText(residentEntry.getTitle());
-        ((TextView)myView.findViewById(R.id.createdDate_tv)).setText(residentEntry.getCreatedDate());
-        ((TextView)myView.findViewById(R.id.ByName_tv)).setText(residentEntry.getByName());
+        ((TextView)myView.findViewById(R.id.res_no)).setText(position+1+".");
+        ((TextView)myView.findViewById(R.id.res_title)).setText(residentEntry.getTitle());
+        ((TextView)myView.findViewById(R.id.res_createdDate)).setText(residentEntry.getCreatedDate());
+        ((TextView)myView.findViewById(R.id.res_byname)).setText(residentEntry.getByName());
 
         return myView;
     }
