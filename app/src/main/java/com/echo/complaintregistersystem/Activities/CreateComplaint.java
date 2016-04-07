@@ -2,8 +2,8 @@ package com.echo.complaintregistersystem.Activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -20,18 +19,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.echo.complaintregistersystem.Adapters.IndividualRListAdapter;
-import com.echo.complaintregistersystem.ListItems.IndividualR_CLEntry;
 import com.echo.complaintregistersystem.MainActivity;
 import com.echo.complaintregistersystem.R;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 
 public class CreateComplaint extends AppCompatActivity {
 
@@ -126,6 +121,12 @@ public class CreateComplaint extends AppCompatActivity {
                                         boolean IsSuccess = response.getBoolean("success");
                                         if (IsSuccess) {
                                             Toast.makeText(CreateComplaint.this, "complaint lodged succesfully", Toast.LENGTH_SHORT).show();
+                                            finish();
+//                                            Intent myIntent = new Intent(CreateComplaint.this, MainActivity.class);
+//                                            myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);// clear back stack
+//                                            startActivity(myIntent);
+//                                            finish();
+//                                            return;
                                         } else {
                                             Toast.makeText(CreateComplaint.this, "complaint lodging failed try again", Toast.LENGTH_SHORT).show();
                                         }

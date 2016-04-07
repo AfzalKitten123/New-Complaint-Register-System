@@ -38,6 +38,7 @@ public class UnresolvedIndividualFragment extends Fragment {
 
     ListView listView;
     List<Individual_CLEntry> complaintList;
+//    Switch mySwitch;
     SharedPreferences sharedPreferences;
     public UnresolvedIndividualFragment() {
         // Required empty public constructor
@@ -47,7 +48,16 @@ public class UnresolvedIndividualFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View myView=inflater.inflate(R.layout.fragment_unresolved_individual, container, false);
+        final View myView=inflater.inflate(R.layout.fragment_unresolved_individual, container, false);
+//        mySwitch = (Switch)myView.findViewById(R.id.indcl_switch);
+//        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if(isChecked){
+//                   String mycomplaintID = buttonView.getParent().
+//                }
+//            }
+//        });
         listView=(ListView)myView.findViewById(R.id.Ind_lv);
         sharedPreferences = getActivity().getSharedPreferences("MYPREFERENCES", Context.MODE_PRIVATE);
         String userID = sharedPreferences.getString("PRIMARY_ID","1");
@@ -74,6 +84,7 @@ public class UnresolvedIndividualFragment extends Fragment {
                                         sharedPreferences.getString("USERNAME","Afzal Shama"),
                                         complaintArray.getJSONObject(i).getString("room_no"),
                                         sharedPreferences.getString("RESIDENCY","HIMADRI")
+
                                  //       complaintArray.getJSONObject(i).getString("comments")
                                 ));
                             }
