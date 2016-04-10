@@ -43,7 +43,9 @@ public class CommentListAdapter extends ArrayAdapter<CommentEntry> {
 
         ((TextView)itemView.findViewById(R.id.comment_text)).setText(commentEntry.getTitle());
         ((TextView)itemView.findViewById(R.id.comment_name)).setText(commentEntry.getName());
-        ((TextView)itemView.findViewById(R.id.comment_date)).setText(commentEntry.getDate());
+        String date = commentEntry.getDate();
+        String setDate = date.substring(0,10)+"\n"+date.substring(11, 19);
+        ((TextView)itemView.findViewById(R.id.comment_date)).setText(setDate);
 
         return itemView;
     }

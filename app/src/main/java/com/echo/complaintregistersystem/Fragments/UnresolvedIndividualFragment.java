@@ -83,8 +83,8 @@ public class UnresolvedIndividualFragment extends Fragment {
                                         sharedPreferences.getString("NAME", "Afzal Shama"),
                                         sharedPreferences.getString("USERNAME","Afzal Shama"),
                                         complaintArray.getJSONObject(i).getString("room_no"),
-                                        sharedPreferences.getString("RESIDENCY","HIMADRI")
-
+                                        sharedPreferences.getString("RESIDENCY","HIMADRI"),
+                                        complaintArray.getJSONObject(i).getInt("id")
                                  //       complaintArray.getJSONObject(i).getString("comments")
                                 ));
                             }
@@ -118,6 +118,7 @@ public class UnresolvedIndividualFragment extends Fragment {
                 i.putExtra("byname", complaintList.get(position).getByName());
                 i.putExtra("username", complaintList.get(position).getUsername());
                 i.putExtra("room_no", complaintList.get(position).getRoomNo());
+                i.putExtra("ID", complaintList.get(position).getID());
                 // i.putExtra("comments",complaintList.get(position).getComments());
 
                 startActivity(i);

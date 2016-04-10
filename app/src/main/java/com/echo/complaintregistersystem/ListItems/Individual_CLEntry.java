@@ -10,14 +10,14 @@ public class Individual_CLEntry {
     private String username;
     private String roomNo;
     private String residence;
-    private String Comments;
+    private int id ;
 
 
     public Individual_CLEntry(){
 
     }
 
-    public Individual_CLEntry(String title, String description, String category, String createdDate, String resolvedDate, String byName, String username, String roomNo, String residence/*, String comments*/) {
+    public Individual_CLEntry(String title, String description, String category, String createdDate, String resolvedDate, String byName, String username, String roomNo, String residence, int id) {
         this.title = title;
         this.description = description;
         this.category = category;
@@ -27,6 +27,7 @@ public class Individual_CLEntry {
         this.username = username;
         this.roomNo = roomNo;
         this.residence = residence;
+        this.id = id;
         //Comments = comments;
     }
 
@@ -66,7 +67,7 @@ public class Individual_CLEntry {
         return residence;
     }
 
-    public String getComments() {
-        return Comments;
+    public int getID() {
+        return id;
     }
 }
