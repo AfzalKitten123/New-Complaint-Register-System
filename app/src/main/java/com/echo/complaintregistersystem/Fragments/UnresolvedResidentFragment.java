@@ -75,7 +75,8 @@ public class UnresolvedResidentFragment extends Fragment {
                                         complaintArray.getJSONObject(i).getString("byname"),
                                         complaintArray.getJSONObject(i).getString("username"),
                                         complaintArray.getJSONObject(i).getString("room_no"),
-                                        complaintArray.getJSONObject(i).getString("origin")
+                                        complaintArray.getJSONObject(i).getString("origin"),
+                                        complaintArray.getJSONObject(i).getInt("id")
                                       //  complaintArray.getJSONObject(i).getString("comments")
                                        ));
                             }
@@ -110,6 +111,7 @@ public class UnresolvedResidentFragment extends Fragment {
                 i.putExtra("byname", complaintList.get(position).getByName());
                 i.putExtra("username", complaintList.get(position).getUsername());
                 i.putExtra("room_no", complaintList.get(position).getRoomNo());
+                i.putExtra("id",complaintList.get(position).getID());
                 // i.putExtra("comments",complaintList.get(position).getComments());
 
                 startActivity(i);

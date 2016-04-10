@@ -65,7 +65,7 @@ public class ComplaintInfo extends AppCompatActivity {
         category = (TextView)findViewById(R.id.category_tv);
         category.setText(i.getStringExtra("category"));
 
-        id = i.getIntExtra("ID", 0);
+        id = i.getIntExtra("ID", 1);
 
         listView = (ListView)findViewById(R.id.listView_comments);
         final List<CommentEntry> commentEntries = new ArrayList<>();

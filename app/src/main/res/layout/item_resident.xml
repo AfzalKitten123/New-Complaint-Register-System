@@ -16,6 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:focusable="false"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="1."
             android:id="@+id/res_no" />
@@ -25,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:focusable="false"
         android:layout_weight="1"
         android:layout_marginLeft="15dp">
         <TextView
@@ -33,6 +35,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Fan is not working"
             android:id="@+id/res_title"
+            android:focusable="false"
             android:capitalize="sentences" />
 
         <LinearLayout
@@ -56,6 +59,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="26-03-2016"
             android:id="@+id/res_createdDate"
+            android:focusable="false"
             android:layout_marginTop="3dp" />
 
         </LinearLayout>
@@ -76,6 +80,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Afzal Shama"
+            android:focusable="false"
             android:id="@+id/res_byname"
             android:layout_marginTop="3dp"/>
         </LinearLayout>
@@ -85,12 +90,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:visibility="gone"
         android:layout_marginLeft="70dp">
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="false"
+            android:visibility="gone"
             android:id="@+id/res_switch"/>
     </LinearLayout>
 
