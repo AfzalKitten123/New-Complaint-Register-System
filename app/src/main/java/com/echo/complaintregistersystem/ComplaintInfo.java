@@ -45,7 +45,7 @@ public class ComplaintInfo extends AppCompatActivity {
         createdOn.setText(i.getStringExtra("date_created"));
 
         resolvedOn = (TextView)findViewById(R.id.resolvedDate_tv);
-        resolvedOn.setText(i.getStringExtra("date_resolved")==null?"Pending":i.getStringExtra("date_resolved"));
+        resolvedOn.setText(i.getStringExtra("date_resolved").equalsIgnoreCase("null")?"Pending":i.getStringExtra("date_resolved"));
 
         byName = (TextView)findViewById(R.id.Lodger_tv);
         byName.setText(i.getStringExtra("byname"));

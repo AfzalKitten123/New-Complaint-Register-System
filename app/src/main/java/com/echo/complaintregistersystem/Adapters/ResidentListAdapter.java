@@ -1,6 +1,7 @@
 package com.echo.complaintregistersystem.Adapters;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,11 +38,11 @@ public class ResidentListAdapter extends ArrayAdapter<ResidentEntry> {
         ((TextView)myView.findViewById(R.id.res_createdDate)).setText(residentEntry.getCreatedDate());
         ((TextView)myView.findViewById(R.id.res_byname)).setText(residentEntry.getByName());
 
+        sharedPreferences = myActivity.getSharedPreferences("MYPREFERENCES", Context.MODE_PRIVATE);
         Switch aSwitch = (Switch) myView.findViewById(R.id.res_switch);
         if(sharedPreferences.getString("TYPE_OF_USER", "").equalsIgnoreCase("warden")){
             aSwitch.setVisibility(View.VISIBLE);
         }
-
         return myView;
     }
 }
