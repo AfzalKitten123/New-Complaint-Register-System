@@ -8,5 +8,8 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Ind_lv" />
+        android:id="@+id/Ind_lv"
+        android:focusableInTouchMode="true"
+        android:clickable="true"
+        android:focusable="true"/>
 </FrameLayout>

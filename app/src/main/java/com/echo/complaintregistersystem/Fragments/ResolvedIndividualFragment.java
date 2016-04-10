@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -22,7 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.echo.complaintregistersystem.Adapters.IndividualRListAdapter;
 import com.echo.complaintregistersystem.ComplaintInfo;
 import com.echo.complaintregistersystem.ListItems.IndividualR_CLEntry;
-import com.echo.complaintregistersystem.MainActivity;
+import com.echo.complaintregistersystem.Activities.MainActivity;
 import com.echo.complaintregistersystem.R;
 
 import org.json.JSONArray;

@@ -18,15 +18,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.echo.complaintregistersystem.Adapters.InstituteListAdapter;
-import com.echo.complaintregistersystem.Adapters.InstituteRListAdapter;
 import com.echo.complaintregistersystem.Adapters.ResidentListAdapter;
 import com.echo.complaintregistersystem.ComplaintInfo;
-import com.echo.complaintregistersystem.ListItems.InstituteEntry;
-import com.echo.complaintregistersystem.ListItems.InstituteREntry;
 import com.echo.complaintregistersystem.ListItems.ResidentEntry;
-import com.echo.complaintregistersystem.ListItems.ResidentREntry;
-import com.echo.complaintregistersystem.MainActivity;
+import com.echo.complaintregistersystem.Activities.MainActivity;
 import com.echo.complaintregistersystem.R;
 
 import org.json.JSONArray;

@@ -21,7 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.echo.complaintregistersystem.Adapters.InstituteListAdapter;
 import com.echo.complaintregistersystem.ComplaintInfo;
 import com.echo.complaintregistersystem.ListItems.InstituteEntry;
-import com.echo.complaintregistersystem.MainActivity;
+import com.echo.complaintregistersystem.Activities.MainActivity;
 import com.echo.complaintregistersystem.R;
 
 import org.json.JSONArray;

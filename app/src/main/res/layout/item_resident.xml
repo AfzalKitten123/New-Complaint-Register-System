@@ -32,7 +32,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Fan is not working"
-            android:id="@+id/res_title"/>
+            android:id="@+id/res_title"
+            android:capitalize="sentences" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -84,6 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:visibility="gone"
         android:layout_marginLeft="70dp">
         <Switch
             android:layout_width="wrap_content"
