@@ -11,13 +11,15 @@ public class InstituteREntry {
     private String roomNo;
     private String residence;
     private String Comments;
+    private int id;
+
 
 
     public InstituteREntry(){
 
     }
 
-    public InstituteREntry(String title, String description, String category, String createdDate, String resolvedDate, String byName, String username, String roomNo, String residence/*, String comments*/) {
+    public InstituteREntry(String title, String description, String category, String createdDate, String resolvedDate, String byName, String username, String roomNo, String residence/*, String comments*/,int id) {
         this.title = title;
         this.description = description;
         this.category = category;
@@ -28,6 +30,7 @@ public class InstituteREntry {
         this.roomNo = roomNo;
         this.residence = residence;
         //Comments = comments;
+        this.id=id;
     }
 
     public String getTitle() {
@@ -69,4 +72,6 @@ public class InstituteREntry {
     public String getComments() {
         return Comments;
     }
+    public int getId(){return  id;}
+
 }

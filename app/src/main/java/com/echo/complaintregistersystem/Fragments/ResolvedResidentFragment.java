@@ -79,7 +79,8 @@ public class ResolvedResidentFragment extends Fragment {
                                         complaintArray.getJSONObject(i).getString("byname"),
                                         complaintArray.getJSONObject(i).getString("username"),
                                         complaintArray.getJSONObject(i).getString("room_no"),
-                                        complaintArray.getJSONObject(i).getString("origin")
+                                        complaintArray.getJSONObject(i).getString("origin"),
+                                        complaintArray.getJSONObject(i).getInt("id")
 //                                        complaintArray.getJSONObject(i).getString("comments")
                                         ));
                             }

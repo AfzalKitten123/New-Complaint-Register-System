@@ -77,7 +77,8 @@ public class ResolvedIndividualFragment extends Fragment {
                                         complaintArray.getJSONObject(i).getString("byname"),
                                         complaintArray.getJSONObject(i).getString("username"),
                                         complaintArray.getJSONObject(i).getString("room_no"),
-                                        sharedPreferences.getString("RESIDENCY","HIMADRI")
+                                        sharedPreferences.getString("RESIDENCY","HIMADRI"),
+                                        complaintArray.getJSONObject(i).getInt("id")
                                 //        ,complaintArray.getJSONObject(i).getString("comments")
                                 ));}
 

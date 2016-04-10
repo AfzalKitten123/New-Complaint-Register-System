@@ -21,8 +21,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.CreateComplaint"
-            android:label="Lodge A New Complaint"/>
+        <activity
+            android:name=".Activities.CreateComplaint"
+            android:label="Lodge A New Complaint" />
         <activity android:name=".Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,8 +43,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".addComment_popup"
+            android:theme="@style/AppTheme.customtheme" />
+        <activity
             android:name=".Profile"
             android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Register"
+            android:label="@string/title_activity_register"
             android:theme="@style/AppTheme"></activity>
     </application>
 

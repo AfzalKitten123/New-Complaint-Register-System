@@ -11,12 +11,13 @@ public class InstituteEntry {
     private String roomNo;
     private String residence;
     private String Comments;
+    private int id;
 
     public InstituteEntry(){
 
     }
 
-    public InstituteEntry(String title, String description, String category, String createdDate, String resolvedDate, String byName, String username, String roomNo, String residence/*, String comments*/) {
+    public InstituteEntry(String title, String description, String category, String createdDate, String resolvedDate, String byName, String username, String roomNo, String residence/*, String comments*/,int id) {
         this.title = title;
         this.description = description;
         this.category = category;
@@ -27,6 +28,7 @@ public class InstituteEntry {
         this.roomNo = roomNo;
         this.residence = residence;
         //Comments = comments;
+        this.id=id;
     }
 
     public String getTitle() {
@@ -68,4 +70,7 @@ public class InstituteEntry {
     public String getComments() {
         return Comments;
     }
+
+    public int getId(){return  id;}
+
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,15 @@ public class ComplaintInfo extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(ComplaintInfo.this, CreateComplaint.class);
                 startActivity(i);
+            }
+        });
+
+        Button add_Comment = (Button)findViewById(R.id.button);
+        add_Comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ComplaintInfo.this,addComment_popup.class);
+                startActivity(intent);
             }
         });
 
