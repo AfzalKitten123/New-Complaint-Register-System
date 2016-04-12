@@ -10,7 +10,6 @@ public class ResidentREntry {
     private String username;
     private String roomNo;
     private String residence;
-    private String Comments;
     private int id;
 
 
@@ -66,10 +65,6 @@ public class ResidentREntry {
 
     public String getResidence() {
         return residence;
-    }
-
-    public String getComments() {
-        return Comments;
     }
 
     public int getId(){return  id;}

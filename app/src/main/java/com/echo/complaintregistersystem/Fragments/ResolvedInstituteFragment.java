@@ -107,7 +107,7 @@ public class ResolvedInstituteFragment extends Fragment {
                 i.putExtra("byname", complaintList.get(position).getByName());
                 i.putExtra("username", complaintList.get(position).getUsername());
                 i.putExtra("room_no", complaintList.get(position).getRoomNo());
-                // i.putExtra("comments",complaintList.get(position).getComments());
+                i.putExtra("id", complaintList.get(position).getId());
 
                 startActivity(i);
             }

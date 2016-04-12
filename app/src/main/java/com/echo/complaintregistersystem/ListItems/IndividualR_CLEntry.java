@@ -10,7 +10,6 @@ public class IndividualR_CLEntry {
     private String username;
     private String roomNo;
     private String residence;
-    private String Comments;
     private int id;
 
     public IndividualR_CLEntry(){
@@ -28,7 +27,6 @@ public class IndividualR_CLEntry {
         this.roomNo = roomNo;
         this.residence = residence;
         this.id = id;
-    //    Comments = comments;
     }
 
     public String getByName(){
@@ -67,12 +65,8 @@ public class IndividualR_CLEntry {
         return residence;
     }
 
-    public int getId(){return  id;}
-
-
-  /*  public String getComments() {
-        return Comments;
-    }*/
-
+    public int getId() {
+        return  id;
+    }
 
 }

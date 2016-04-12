@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="bottom"
-    android:alpha="0.95">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:background="#56e7d9d9">
+    android:layout_height="wrap_content"
+    android:alpha="0.95"
+    android:background="#56e7d9d9"
+    android:gravity="center_horizontal">
         <android.support.design.widget.TextInputLayout
-            android:layout_width="240dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
         <EditText
@@ -29,7 +25,7 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="done"
+            android:background="@drawable/button_background"
             android:id="@+id/done"
             />
-    </LinearLayout>
 </LinearLayout>

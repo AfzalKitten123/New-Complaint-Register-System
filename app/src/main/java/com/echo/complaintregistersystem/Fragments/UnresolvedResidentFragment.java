@@ -111,8 +111,7 @@ public class UnresolvedResidentFragment extends Fragment {
                 i.putExtra("byname", complaintList.get(position).getByName());
                 i.putExtra("username", complaintList.get(position).getUsername());
                 i.putExtra("room_no", complaintList.get(position).getRoomNo());
-                i.putExtra("id",complaintList.get(position).getID());
-                // i.putExtra("comments",complaintList.get(position).getComments());
+                i.putExtra("id",complaintList.get(position).getID());;
 
                 startActivity(i);
             }

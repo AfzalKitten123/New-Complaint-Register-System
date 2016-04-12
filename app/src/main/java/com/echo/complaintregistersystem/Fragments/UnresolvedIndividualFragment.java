@@ -49,15 +49,6 @@ public class UnresolvedIndividualFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View myView=inflater.inflate(R.layout.fragment_unresolved_individual, container, false);
-//        mySwitch = (Switch)myView.findViewById(R.id.indcl_switch);
-//        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if(isChecked){
-//                   String mycomplaintID = buttonView.getParent().
-//                }
-//            }
-//        });
         listView=(ListView)myView.findViewById(R.id.Ind_lv);
         sharedPreferences = getActivity().getSharedPreferences("MYPREFERENCES", Context.MODE_PRIVATE);
         String userID = sharedPreferences.getString("PRIMARY_ID","1");
@@ -118,8 +109,7 @@ public class UnresolvedIndividualFragment extends Fragment {
                 i.putExtra("byname", complaintList.get(position).getByName());
                 i.putExtra("username", complaintList.get(position).getUsername());
                 i.putExtra("room_no", complaintList.get(position).getRoomNo());
-                i.putExtra("ID", complaintList.get(position).getID());
-                // i.putExtra("comments",complaintList.get(position).getComments());
+                i.putExtra("id", complaintList.get(position).getID());
 
                 startActivity(i);
             }
