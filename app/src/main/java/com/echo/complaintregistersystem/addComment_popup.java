@@ -15,6 +15,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.echo.complaintregistersystem.Activities.MainActivity;
 
 import org.json.JSONException;
@@ -66,8 +67,8 @@ public class addComment_popup extends Activity{
                         try {
                             if(response.getBoolean("success")){
                                 Toast.makeText(addComment_popup.this,"comment posted",Toast.LENGTH_LONG).show();
-//                                Intent intent = new Intent(addComment_popup.this,ComplaintInfo.class);
-//                                startActivity(intent);
+                                Intent intent = new Intent(addComment_popup.this,ComplaintInfo.class);
+                                startActivity(intent);
                                 finish();
                             }else {
                                 Toast.makeText(addComment_popup.this,"failed to post comment",Toast.LENGTH_LONG).show();
@@ -85,9 +86,9 @@ public class addComment_popup extends Activity{
                         Toast.makeText(addComment_popup.this,"onErrorResponse" + error.getMessage(),Toast.LENGTH_LONG).show();
                         error.printStackTrace();
                     }
-                }
-
+                    }
                 );
+                Volley.newRequestQueue(addComment_popup.this).add(jsonObjectRequest);
             }
         });
 

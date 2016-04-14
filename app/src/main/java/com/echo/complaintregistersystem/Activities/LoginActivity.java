@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,23 @@ public class LoginActivity extends AppCompatActivity {
         final TextView username = (TextView) findViewById(R.id.Username);
         final TextView password = (TextView) findViewById(R.id.password);
         final CheckBox rememberMe = (CheckBox) findViewById(R.id.remember_login);
+        RadioGroup type = (RadioGroup) findViewById(R.id.radioGroup_type);
+        final String[] typeS = {""};
+        assert type != null;
+        type.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.radioButton_user:
+                        typeS[0] = "user";
+                        break;
+                    case R.id.radioButton_authority:
+                        typeS[0] = "authority";
+                        break;
+                }
+            }
+        });
+
         final String[] url = new String[1];
         sharedPreferences = getSharedPreferences("MYPREFERENCES", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -74,7 +92,12 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                url[0] = MainActivity.ip + "loginUser/"+username.getText().toString()+"/"+password.getText().toString()+"/";
+                sharedPreferences.edit().putString("typeS", typeS[0]);
+                if(typeS[0].equalsIgnoreCase("user"))
+                    url[0] = MainActivity.ip + "loginUser/" + username.getText().toString() + "/" + password.getText().toString() + "/";
+                else
+                    url[0] = MainActivity.ip + "loginAuthority/" + username.getText().toString() + "/" + password.getText().toString() + "/";
+
                 Toast.makeText(LoginActivity.this, "Connecting to the server", Toast.LENGTH_SHORT).show();
                 JsonObjectRequest jsonRequest = new JsonObjectRequest
                         (Request.Method.GET, url[0], null, new Response.Listener<JSONObject>() {
@@ -85,20 +108,27 @@ public class LoginActivity extends AppCompatActivity {
                                     if (response.getBoolean("success")) {
                                         Toast.makeText(LoginActivity.this, "LogIn Successful", Toast.LENGTH_SHORT).show();
                                         JSONObject userDetails = response.getJSONObject("details");
-                                        if(rememberMe.isChecked())
+                                        if (rememberMe.isChecked())
                                             editor.putBoolean("ISLOGIN", true);
+                                        Intent intent;
                                         editor.putString("NAME", userDetails.getString("name"));
                                         editor.putString("EMAIL", userDetails.getString("email"));
                                         editor.putString("USERNAME", userDetails.getString("username"));
                                         editor.putString("PASSWORD", userDetails.getString("password"));
-                                        editor.putString("TYPE_OF_USER", userDetails.getString("type_of_user"));
-                                        editor.putString("RESIDENCY",userDetails.getString("residency"));
-                                        editor.putString("CONTACT_NO",userDetails.getString("contact_number"));
-                                        editor.putString("ROOM_NO",userDetails.getString("room_no"));
-                                        editor.putString("PRIMARY_ID",userDetails.getString("primary_id"));
+                                        editor.putString("CONTACT_NO", userDetails.getString("contact_number"));
+                                        editor.putString("PRIMARY_ID", userDetails.getString("primary_id"));
+                                        if(typeS[0].equalsIgnoreCase("user")) {
+                                            editor.putString("TYPE_OF_USER", userDetails.getString("type_of_user"));
+                                            editor.putString("RESIDENCY", userDetails.getString("residency"));
+                                            editor.putString("ROOM_NO", userDetails.getString("room_no"));
+                                            intent = new Intent(LoginActivity.this, MainActivity.class);
+
+                                        }else{
+                                            editor.putString("TYPE",userDetails.getString("type"));
+                                            intent = new Intent(LoginActivity.this, MainActivityAuthority.class);
+                                        }
                                         editor.commit();
-                                        Toast.makeText(LoginActivity.this, "Name : "+userDetails.getString("name"), Toast.LENGTH_SHORT).show();
-                                       Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        Toast.makeText(LoginActivity.this, "Name : " + userDetails.getString("name"), Toast.LENGTH_SHORT).show();
                                         startActivity(intent);
                                     } else
                                         Toast.makeText(LoginActivity.this, "LogIn Unsuccessful", Toast.LENGTH_LONG).show();

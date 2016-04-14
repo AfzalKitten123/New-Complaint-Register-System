@@ -52,7 +52,8 @@
         <activity
             android:name=".Register"
             android:label="@string/title_activity_register"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activities.MainActivityAuthority"></activity>
     </application>
 
 </manifest>

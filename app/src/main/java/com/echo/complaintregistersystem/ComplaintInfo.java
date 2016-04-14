@@ -15,7 +15,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.echo.complaintregistersystem.Activities.CreateComplaint;
 import com.echo.complaintregistersystem.Activities.MainActivity;
 import com.echo.complaintregistersystem.Adapters.CommentListAdapter;
 import com.echo.complaintregistersystem.ListItems.CommentEntry;
@@ -38,14 +37,9 @@ public class ComplaintInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaint_info);
 
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(ComplaintInfo.this, CreateComplaint.class);
-                startActivity(i);
-            }
-        });
+        fab.setVisibility(View.GONE);
 
         Button add_Comment = (Button)findViewById(R.id.button);
         add_Comment.setOnClickListener(new View.OnClickListener() {
@@ -68,8 +62,11 @@ public class ComplaintInfo extends AppCompatActivity {
         createdOn.setText(i.getStringExtra("date_created"));
 
         resolvedOn = (TextView)findViewById(R.id.resolvedDate_tv);
-        resolvedOn.setText(i.getStringExtra("date_resolved").equalsIgnoreCase("null")?"Pending":i.getStringExtra("date_resolved"));
-
+        try {
+            resolvedOn.setText(i.getStringExtra("date_resolved").equalsIgnoreCase("null") ? "Pending" : i.getStringExtra("date_resolved"));
+        }catch (Exception e){
+            resolvedOn.setText("Pending");
+        }
         byName = (TextView)findViewById(R.id.Lodger_tv);
         byName.setText(i.getStringExtra("byname"));
 

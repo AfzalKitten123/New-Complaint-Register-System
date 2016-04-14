@@ -1,6 +1,9 @@
 package com.echo.complaintregistersystem.ListItems;
 
-public class ResidentEntry {
+/**
+ * Created by Rohit on 4/14/16.
+ */
+public class ResolvedEntry {
     private String title;
     private String description;
     private String category;
@@ -9,16 +12,16 @@ public class ResidentEntry {
     private String byName;
     private String username;
     private String roomNo;
-    private int votes;
     private String residence;
+    private String level;
+    private int votes;
     private int id;
 
-
-    public ResidentEntry(){
+    public ResolvedEntry(){
 
     }
 
-    public ResidentEntry(String title, String description, String category, String createdDate, String resolvedDate, String byName, String username, String roomNo,int votes, String residence/*, String comments*/,int id) {
+    public ResolvedEntry(String title, String description, String category, String createdDate, String resolvedDate, String byName, String username, String roomNo, String residence, String level, int votes, int id) {
         this.title = title;
         this.description = description;
         this.category = category;
@@ -27,10 +30,10 @@ public class ResidentEntry {
         this.byName = byName;
         this.username = username;
         this.roomNo = roomNo;
-        this.votes = votes;
         this.residence = residence;
-        this.id=id;
-       // Comments = comments;
+        this.level = level;
+        this.votes = votes;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -69,12 +72,15 @@ public class ResidentEntry {
         return residence;
     }
 
+    public String getLevel() {
+        return level;
+    }
+
     public int getVotes() {
         return votes;
     }
 
-    public int getID() {
+    public int getId() {
         return id;
     }
-
 }
